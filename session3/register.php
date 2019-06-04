@@ -12,6 +12,7 @@
 	<h1>Register form</h1>
 	<?php 
 		$errUserName = $errPassword = '';
+		$username = $password = '';
 		if (isset($_POST['register'])) {
 			$username =  $_POST['username'];
 			$password =  $_POST['password'];
@@ -29,11 +30,11 @@
 	?>
 	<form action="#" method="POST">
 		<p>Username: 
-			<input type="text" name="username">
+			<input type="text" name="username" value="<?php echo $username?>">
 			<p class="error"><?php echo $errUserName;?></p>
 		</p>
 		<p>Password: 
-			<input type="password" name="password">
+			<input type="password" name="password" value="<?php echo $password?>">
 			<p class="error"><?php echo $errPassword;?></p>
 		</p>
 		<p>
