@@ -51,17 +51,17 @@
 		</p>
 		<p class="error"><?php echo $errPassword;?></p>
 		<p>Gender:
-			<input type="radio" name="gender" value="male"> Male
-			<input type="radio" name="gender" value="female"> Female
-			<input type="radio" name="gender" value="other"> Other
+			<input type="radio" name="gender" value="male" <?php if ($gender == 'male') {echo "checked";}?>> Male
+			<input type="radio" name="gender" value="female" <?php if ($gender == 'female') {echo "checked";}?> > Female
+			<input type="radio" name="gender" value="other" <?php if ($gender == 'other') {echo "checked";}?>> Other
 		</p>
 		<p class="error"><?php echo $errGender;?></p>
 		<p>City:
 		<select name="city">
-			<option value="">Please choose city</option>
-			<option value="danang">Da Nang</option>
-			<option value="hanoi">Ha Noi</option>
-			<option value="hochiminh">Ho Chi Minh</option>
+			<option value="" <?php if ($city == '') {echo "selected";}?>>Please choose city</option>
+			<option value="danang" <?php if ($city == 'danang') {echo "selected";}?>>Da Nang</option>
+			<option value="hanoi" <?php if ($city == 'hanoi') {echo "selected";}?>>Ha Noi</option>
+			<option value="hochiminh" <?php if ($city == 'hochiminh') {echo "selected";}?>>Ho Chi Minh</option>
 		</select>
 		</p>
 		<p class="error"><?php echo $errCity;?></p>
