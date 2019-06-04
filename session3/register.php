@@ -18,7 +18,7 @@
 			$password =  $_POST['password'];
 			$gender   =  $_POST['gender'];
 			$city     =  $_POST['city'];
-			var_dump($_POST['city']);
+			//var_dump($_POST['city']);
 			if ($username == '') {
 				$errUserName  = 'Please input your username';
 			} else {
