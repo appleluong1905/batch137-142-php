@@ -11,8 +11,9 @@
 <body>
 	<h1>Register form</h1>
 	<?php 
-		$errUserName = $errPassword = $errGender = $errCity = '';
+		$errUserName = $errPassword = $errGender = $errCity  = $errAvatar = '';
 		$username = $password = '';
+		$checkRegister = true;
 		if (isset($_POST['register'])) {
 			$username =  $_POST['username'];
 			$password =  $_POST['password'];
@@ -21,27 +22,45 @@
 			//var_dump($_POST['city']);
 			if ($username == '') {
 				$errUserName  = 'Please input your username';
+				$checkRegister = false;
 			} else {
 				$errUserName = '';
 			}
 			if ($password == '') {
 				$errPassword  = 'Please input your password';
+				$checkRegister = false;
 			} else {
 				$errPassword = '';
 			}
 			if ($gender == NULL) {
 				$errGender  = 'Please choose your gender';
+				$checkRegister = false;
 			} else {
 				$errGender = '';
 			}
 			if ($city == '') {
 				$errCity  = 'Please choose your city';
+				$checkRegister = false;
 			} else {
 				$errCity = '';
 			}
+
+			// upload avatar
+			//var_dump($_FILES);
+			if ($_FILES['avatar']['error'] == 0) {
+				$errAvatar = '';
+			} else {
+				$errAvatar = 'Please choose your avatar';
+				$checkRegister = false;
+			}
+			if ($checkRegister) {
+				$avatarName = $_FILES['avatar']['name'];
+				move_uploaded_file($_FILES['avatar']['tmp_name'], 'uploads/'.$avatarName);
+				echo "Register success!";
+			}
 		}
 	?>
-	<form action="#" method="POST">
+	<form action="#" method="POST" enctype="multipart/form-data">
 		<p>Username: 
 			<input type="text" name="username" value="<?php echo $username?>">
 		</p>
@@ -65,6 +84,10 @@
 		</select>
 		</p>
 		<p class="error"><?php echo $errCity;?></p>
+		<p>Avatar:
+			<input type="file" name="avatar">
+		</p>
+		<p class="error"><?php echo $errAvatar;?></p>
 		<p>
 			<input type="submit" name="register" value="Register">
 		</p>
