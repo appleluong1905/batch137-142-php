@@ -17,7 +17,7 @@
 		if (isset($_POST['register'])) {
 			$username =  $_POST['username'];
 			$password =  $_POST['password'];
-			$gender   =  $_POST['gender'];
+			$gender   =  isset($_POST['gender'])?$_POST['gender']:"";
 			$city     =  $_POST['city'];
 			//var_dump($_POST['city']);
 			if ($username == '') {
