@@ -6,6 +6,9 @@
 		.error {
 			color: red;
 		}
+		img {
+			width: 150px;
+		}
 	</style>
 </head>
 <body>
@@ -59,14 +62,20 @@
 			$tienDien = 100*1500 + 200*2000 + ($soDien - 300)*3500;
 		}
 		if ($checkTinhTien) {
+			if ($_FILES['phieucu']['error'] == 0) {
+				$randomName = uniqid();
+				$tenPhieuCu = $randomName.'_'.$_FILES['phieucu']['name'];
+				move_uploaded_file($_FILES['phieucu']['tmp_name'], 'phieucu/'.$tenPhieuCu);
+			}
 			echo "<p>Phieu tinh tien dien cua gia dinh: ".$hoten."</p>";
 			echo "<p>Tien dien tinh tu ngay: ".$ngaydau." den ngay ".$ngaycuoi."</p>";
 			echo "<p>So tien dien can thanh toan la: ".number_format($tienDien)." VND";
+			echo "<img src='phieucu/$tenPhieuCu'>";
 		}
 	}
 	?>
 	<h1>Phieu tinh tien dien</h1>
-	<form method="POST">
+	<form method="POST" enctype="multipart/form-data">
 		<p>
 			Ho ten:
 			<input type="text" name="hoten">
@@ -92,6 +101,9 @@
 			<input type="text" name="socuoi">
 		</p>
 		<p class="error"><?php echo $errSoCuoi;?></p>
+		<p>Phieu tien dien ky truoc:
+			<input type="file" name="phieucu">
+		</p>
 		<p>
 			<input type="submit" name="submit" value="Submit">
 		</p>
