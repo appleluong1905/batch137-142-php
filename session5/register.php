@@ -45,7 +45,9 @@
       $sql = "INSERT INTO users(username, password, city, gender, avatar)
       VALUES('$username', '$password', '$city', '$gender', '$avatar')";
 
-      mysqli_query($connect, $sql);
+      if (mysqli_query($connect, $sql) === TRUE) {
+        header("Location: register_success.php");
+      }
     }
   ?>
   <div class="register-logo">
