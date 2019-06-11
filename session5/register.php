@@ -29,6 +29,25 @@
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
+  <?php include_once 'connect.php';?>
+  <?php 
+    if (isset($_POST['register'])) {
+      $username     = $_POST['username'];
+      $password = $_POST['password'];
+      $city     = $_POST['city'];
+      $gender   = isset($_POST['gender'])?$_POST['gender']:NULL;
+      // if (isset($_POST['gender'])) {
+      //   $gender = $_POST['gender'];
+      // } else {
+      //   $gender = NULL;
+      // }
+      $avatar   = 'a.jpg';
+      $sql = "INSERT INTO users(username, password, city, gender, avatar)
+      VALUES('$username', '$password', '$city', '$gender', '$avatar')";
+
+      mysqli_query($connect, $sql);
+    }
+  ?>
   <div class="register-logo">
     <a href="../../index2.html"><b>Admin</b>LTE</a>
   </div>
@@ -36,48 +55,41 @@
   <div class="register-box-body">
     <p class="login-box-msg">Register a new membership</p>
 
-    <form action="../../index.html" method="post">
+    <form action="#" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Full name">
+        <input type="text" name="username" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" name="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Retype password">
-        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        <input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="female"> Female
+      </div>
+      <div class="form-group">
+        <label>City</label>
+        <select class="form-control" name="city">
+          <option value="">Choose city</option>
+          <option value="quangtri">Quang Tri</option>
+          <option value="hue">Hue</option>
+          <option value="danang">Da Nang</option>
+          <option value="quangnam">Quang Nam</option>
+        </select>
+      </div> 
+      <div class="form-group">
+        <label for="exampleInputFile">Avatar</label>
+        <input type="file" id="exampleInputFile" name="avatar">
       </div>
       <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> I agree to the <a href="#">terms</a>
-            </label>
-          </div>
-        </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+          <button type="submit" name="register" class="btn btn-primary btn-block btn-flat">Register</button>
         </div>
         <!-- /.col -->
       </div>
     </form>
-
-    <div class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
-        Google+</a>
-    </div>
-
-    <a href="login.html" class="text-center">I already have a membership</a>
   </div>
   <!-- /.form-box -->
 </div>
