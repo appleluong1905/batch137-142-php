@@ -70,7 +70,7 @@
 			echo "<p>Phieu tinh tien dien cua gia dinh: ".$hoten."</p>";
 			echo "<p>Tien dien tinh tu ngay: ".$ngaydau." den ngay ".$ngaycuoi."</p>";
 			echo "<p>So tien dien can thanh toan la: ".number_format($tienDien)." VND";
-			echo "<img src='phieucu/$tenPhieuCu'>";
+			echo "<p><img src='phieucu/$tenPhieuCu'></p>";
 		}
 	}
 	?>
