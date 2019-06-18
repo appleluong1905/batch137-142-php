@@ -32,22 +32,23 @@
   <?php include_once 'connect.php';?>
   <?php 
     if (isset($_POST['register'])) {
-      $username     = $_POST['username'];
-      $password = $_POST['password'];
+      $username = $_POST['username'];
+      $password = md5($_POST['password']);
       $city     = $_POST['city'];
       $gender   = isset($_POST['gender'])?$_POST['gender']:NULL;
-      // if (isset($_POST['gender'])) {
-      //   $gender = $_POST['gender'];
-      // } else {
-      //   $gender = NULL;
-      // }
-      $avatar   = 'a.jpg';
-      $sql = "INSERT INTO users(username, password, city, gender, avatar)
-      VALUES('$username', '$password', '$city', '$gender', '$avatar')";
+      $avatar   = $_FILES['avatar'];  
 
-      if (mysqli_query($connect, $sql) === TRUE) {
-        header("Location: register_success.php");
-      }
+      if ($username != '' && $password != '' && $city != ''
+          && $gender != '' && $avatar['error'] == 0) {
+       
+        $avatarName = uniqid().'_'.$avatar['name'];
+        move_uploaded_file($avatar['tmp_name'], 'uploads/avatar/'.$avatarName);
+        $sql = "INSERT INTO users(username, password, city, gender, avatar)
+        VALUES('$username', '$password', '$city', '$gender', '$avatarName')";
+         if (mysqli_query($connect, $sql) === TRUE) {
+          header("Location: list_user.php");
+        }
+     }
     }
   ?>
   <div class="register-logo">
@@ -57,7 +58,7 @@
   <div class="register-box-body">
     <p class="login-box-msg">Register a new membership</p>
 
-    <form action="#" method="post">
+    <form action="#" method="post" enctype="multipart/form-data">
       <div class="form-group has-feedback">
         <input type="text" name="username" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
