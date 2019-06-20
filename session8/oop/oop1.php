@@ -2,7 +2,7 @@
 	include 'oop.php';
 	class Student extends User {
 
-		public function testProtected() {
+		protected function testProtected() {
 			$this->showName();
 		}
 
@@ -14,7 +14,7 @@
 	$student = new Student();
   echo $student->city;
   echo $student->showName;
-  //echo $student->testProtected();
+  echo $student->testProtected();
   $user = new User();
   echo $user->checkExistUsername('aaa');
   echo $student->checkExistUsername('aaa');

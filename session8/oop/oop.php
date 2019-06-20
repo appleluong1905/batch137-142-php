@@ -10,7 +10,7 @@
 		public function checkExistUsername($username) {
 			echo "OK men";
 		}
-		private function showName($name = 'de55444mo') {
+		protected function showName($name = 'de55444mo') {
 			echo $name;
 		}
 	}
