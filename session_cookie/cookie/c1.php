@@ -1,3 +1,3 @@
 <?php 
-	setcookie('name', 'Canh', time() + 100);
+	setcookie('name', 'Canh abc', time() + 15);
 ?>

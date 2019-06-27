@@ -52,6 +52,11 @@
 			return mysqli_query($this->connectDB(), $sql);
 
 		}
+		//check login
+		public function checkLogin($username, $password) {
+			$sql = "SELECT username, password FROM users WHERE username = '$username' AND password = '$password'";
+			return mysqli_query($this->connectDB(), $sql);
+		}
 
 	}
 ?>

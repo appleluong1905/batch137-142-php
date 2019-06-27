@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 27, 2019 at 06:53 PM
+-- Generation Time: Jun 27, 2019 at 08:48 PM
 -- Server version: 5.7.26-0ubuntu0.16.04.1
 -- PHP Version: 7.2.18-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -38,7 +38,8 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id`, `name`) VALUES
 (1, 'Admin'),
 (2, 'User'),
-(3, 'Mod');
+(3, 'Mod'),
+(4, 'Editor');
 
 -- --------------------------------------------------------
 
@@ -61,12 +62,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `username`, `password`, `gender`, `city`, `avatar`) VALUES
-(7, 0, 'canh', '96fddc1d238e5b8a9a5fa1e2dd3bd296', 'female', 'danang', '5d08df6e9e872_girlxinh.jpg'),
-(11, 0, 'john', '15de21c670ae7c3f6f3f1f37029303c9', 'female', 'quangtri', '5d0b885933bb4_kaka.jpg'),
-(12, 0, 'admin2', 'bcbe3365e6ac95ea2c0343a2395834dd', 'male', 'quangtri', '5d0b89ff2dcda_hahaa2.jpg'),
-(13, 0, 'admin5', '78af5f4b34026371672fdb4390267c19', 'female', 'quangtri', '5d0b8b1e4a4bb_oke.jpg'),
-(17, 0, 'john', 'test', 'male', 'hue', 'test'),
-(18, 0, 'canh', 'test', 'male', 'hue', 'test');
+(17, 2, 'john', 'test', 'male', 'hue', 'test'),
+(18, 1, 'canh', 'test', 'male', 'hue', 'test'),
+(19, 2, 'admin', 'test', 'male', 'hue', 'test');
 
 --
 -- Indexes for dumped tables
@@ -92,12 +90,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
