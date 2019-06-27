@@ -51,16 +51,24 @@
 					include 'view/home/add_user.php';
 					break;
 				case 'edit_user':
+				  // lay thong tin id cua user can edit
 					$id = $_GET['id'];
+					// lay danh sach role
 					$roles = $model->getRole();
+					// lay thong tin user can edit theo id
 					$editUser = $model->getUser($id);
+					// submit edit user
 					if (isset($_POST['edit'])) {
 						$username = $_POST['username'];
 						$role_id = $_POST['role_id'];
+						// goi ham edit user
 						if ($model->editUser($id, $username, $role_id) === TRUE) {
+							// chuyen ve trang index.php sau khi edit thanh cong
 							header("Location: index.php");
 						}
 					}
+
+					// view hien thi edit user
 					include 'view/home/edit_user.php';
 					break;
 				default:
