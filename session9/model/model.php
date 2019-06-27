@@ -3,7 +3,7 @@
 	class Model extends Connect{
 
 		public function getHome() {
-			$sql = "SELECT * FROM users";
+			$sql = "SELECT users.id as user_id, username, city, gender, avatar, roles.name as role_name FROM users INNER JOIN roles ON users.role_id = roles.id";
 			$result = mysqli_query($this->connectDB(), $sql);
 			return $result;
 		}
@@ -32,6 +32,16 @@
 			$sql = "SELECT * FROM roles";
 			$result = mysqli_query($this->connectDB(), $sql);
 			return $result;
+		}
+		public function getUser($id) {
+			$sql = "SELECT users.id as user_id, username, city, gender, avatar, roles.id as role_id FROM users INNER JOIN roles ON users.role_id = roles.id WHERE users.id = $id";
+			$result = mysqli_query($this->connectDB(), $sql);
+			return $result->fetch_assoc();
+		}
+		public function editUser($id, $username, $role_id){
+			$sql = "UPDATE users SET username = '$username', role_id = $role_id WHERE id = $id";
+			return mysqli_query($this->connectDB(), $sql);
+
 		}
 
 	}

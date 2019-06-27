@@ -6,6 +6,7 @@ Home page here
   <tr>
     <th style="width: 10px">#</th>
     <th>Username</th>
+    <th>Role</th>
     <th>Gender</th>
     <th>City</th>
     <th>Avatar</th>
@@ -14,11 +15,12 @@ Home page here
  <?php 
  if ($home->num_rows > 0) {
  	while($row = $home->fetch_assoc()) {
- 		$id = $row['id'];
+ 		$id = $row['user_id'];
  ?>
     <tr>
-      <td><?php echo $row['id']?></td>
+      <td><?php echo $row['user_id']?></td>
       <td><?php echo $row['username']?></td>
+      <td><?php echo $row['role_name']?></td>
       <td>
         <?php echo $gender[$row['gender']]?>
       </td>
@@ -26,7 +28,7 @@ Home page here
         <?php echo $city[$row['city']]?>
       </td>
       <td><img src="uploads/avatar/default.png" alt="avatar" class="avatar_user"></td>
-      <td><a href="#">Edit</a> | <a href="index.php?action=delete_user&id=<?php echo $id?>">Delete</a></td>
+      <td><a href="index.php?action=edit_user&id=<?php echo $id?>">Edit</a> | <a href="index.php?action=delete_user&id=<?php echo $id?>">Delete</a></td>
     </tr>
   <?php 
   	}

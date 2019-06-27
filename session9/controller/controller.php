@@ -50,6 +50,19 @@
 					}
 					include 'view/home/add_user.php';
 					break;
+				case 'edit_user':
+					$id = $_GET['id'];
+					$roles = $model->getRole();
+					$editUser = $model->getUser($id);
+					if (isset($_POST['edit'])) {
+						$username = $_POST['username'];
+						$role_id = $_POST['role_id'];
+						if ($model->editUser($id, $username, $role_id) === TRUE) {
+							header("Location: index.php");
+						}
+					}
+					include 'view/home/edit_user.php';
+					break;
 				default:
 					# code...
 					break;
