@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="webroot/css/style.css">
 Home page here
 <br>
+<a href="index.php?action=add_user">Add user</a>
 <table class="table table-bordered">
   <tr>
     <th style="width: 10px">#</th>

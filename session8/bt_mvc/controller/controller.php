@@ -39,6 +39,15 @@
 				  	header("Location: index.php");
 				  }
 					break;
+				case 'add_user':
+					if (isset($_POST['add'])) {
+						$username = $_POST['username'];
+						if ($model->addUser($username) === TRUE) {
+							header("Location: index.php");
+						}
+					}
+					include 'view/home/add_user.php';
+					break;
 				default:
 					# code...
 					break;

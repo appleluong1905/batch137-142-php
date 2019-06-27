@@ -24,6 +24,10 @@
 			$result = mysqli_query($this->connectDB(), $sql);
 			return $result;
 		}
+		public function addUser($username){
+			$sql = "INSERT INTO users (username, password, gender, city, avatar) VALUES('$username', 'test', 'male', 'hue', 'test')";
+			return mysqli_query($this->connectDB(), $sql);
+		}
 
 	}
 ?>
